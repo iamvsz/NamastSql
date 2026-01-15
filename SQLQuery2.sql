@@ -64,7 +64,7 @@ insert into a_orders(order_date, order_id, product_name, total_price, discount)
 values ('2023-07-23',1,'Headphones',899,12)
 
 insert into a_orders(order_id, order_date, product_name, total_price,payment_method, discount, category)
-values (1, '2023-09-12','Clock',433,default,12,default)
+values (2, '2023-09-12','Clock',433,default,12,default)
 
 --primary key is unique constraint + not null constraint
 
@@ -81,4 +81,21 @@ alter table a_orders alter column order_date integer; --incompatible
 alter table a_orders alter column product_name varchar(10);
 
 select * from a_orders order by order_id desc;
-drop table a_orders;
+
+
+select * from a_orders;
+
+update a_orders
+set discount = 10;
+
+update a_orders
+set discount = 12
+where order_id = 2;
+
+update a_orders
+set discount = 15
+where order_id <=2;
+
+update a_orders
+set product_name = 'Jeans', payment_method = 'Credit Card'
+where product_name = 'Clock' and order_id = 2;

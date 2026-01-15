@@ -57,3 +57,7 @@ order by order_id asc, total_price desc;
 
 select * from amazon_orders;
 
+--delete filtering
+
+select * from amazon_orders;
+
