@@ -1,18 +1,18 @@
 select * from orders;
 
-select * from Orders 
-order by Customer_Name;
+select * from orders 
+order by customer_name;
 
-select distinct ship_mode from Orders;
+select distinct ship_mode from orders;
 
-select top 5 order_id, order_Date 
-from Orders;
+select top 5 order_id, order_date 
+from orders;
 
 select top 5 * 
 from orders
 order by order_date desc
 
-select distinct ship_mode from Orders;
+select distinct ship_mode from orders;
 select * from orders;
 select distinct segment from orders;
 select distinct ship_mode, segment from orders;
@@ -132,8 +132,43 @@ select order_id, order_date, customer_name
 from orders
 where customer_name like 'a%a';
 
---case insensitive
+--made ssms case sensitive
 select order_id, order_date, customer_name
 from orders
-where customer_name like 'A%A';
+where customer_name like 'A%a';
 
+--case insensitive search
+
+select order_id, order_date, customer_name, upper(customer_name) as name_customer
+from orders
+where upper(customer_name) like 'A%A';
+
+select order_id, order_date, customer_name
+from orders
+where upper(customer_name) like 'A%A';
+
+select order_id, order_date, customer_name
+from orders
+where upper(customer_name) like '_L%';
+
+select order_id, order_date, customer_name
+from orders
+where customer_name like 'C[albo]%';
+
+select order_id, order_date, customer_name
+from orders
+where customer_name like 'C[^albo]%';
+
+select order_id, order_date, customer_name
+from orders
+where customer_name like 'C[a-o]%';
+
+select order_id, order_date, customer_name
+from orders
+where customer_name like 'C[a-o]%'
+order by customer_name;
+
+select order_id, order_date, customer_name
+from orders
+where order_id like 'CA-20[1-2]%'
+order by order_id;
